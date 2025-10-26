@@ -1,0 +1,1 @@
+@tailwind base;@tailwind components;@tailwind utilities;:root{--bayut-blue:#1E40AF;--bayut-light:#DBEAFE}body{@apply bg-white text-gray-900;}

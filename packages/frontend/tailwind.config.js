@@ -1,0 +1,1 @@
+module.exports={content:['./src/**/*.{js,ts,jsx,tsx}'],theme:{extend:{colors:{bayut:{blue:'#1E40AF',light:'#DBEAFE'}}}},plugins:[]}

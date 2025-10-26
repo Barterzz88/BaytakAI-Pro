@@ -1,0 +1,79 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../backend/node_modules/@prisma/client"
+}
+
+model User {
+  id            String    @id @default(uuid())
+  username      String    @unique
+  password      String
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  refreshTokens RefreshToken[]
+  properties    Property[] @relation("ListedBy")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model Property {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  location    String
+  price       Float
+  type        PropType
+  beds        Int
+  baths       Int
+  area        Int
+  imageUrls   String[]
+  status      PropStatus @default(ACTIVE)
+  listedById  String
+  listedBy    User     @relation("ListedBy", fields: [listedById], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  leads       Lead[]
+}
+
+model Lead {
+  id         String   @id @default(uuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id])
+  name       String
+  email      String
+  phone      String?
+  message    String?
+  createdAt  DateTime @default(now())
+}
+
+enum UserRole {
+  USER
+  BROKER
+  ADMIN
+}
+
+enum PropType {
+  APARTMENT
+  VILLA
+  CHALET
+  OFFICE
+  LAND
+}
+
+enum PropStatus {
+  DRAFT
+  ACTIVE
+  PENDING_APPROVAL
+  SOLD
+}

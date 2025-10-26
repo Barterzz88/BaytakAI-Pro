@@ -1,0 +1,1 @@
+import app from './server'; const PORT = process.env.PORT || 4001; app.listen(PORT, ()=>console.log('Backend listening on', PORT));

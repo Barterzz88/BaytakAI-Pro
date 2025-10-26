@@ -1,0 +1,21 @@
+{
+  "name": "baytakai-pro",
+  "private": true,
+  "version": "2.0.0",
+  "description": "BaytakAI Pro - Broker-enabled, admin, leads, Supabase storage, Gemini AI",
+  "scripts": {
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "db:push": "npx prisma db push --schema=./packages/database/schema.prisma",
+    "db:studio": "npx prisma studio --schema=./packages/database/schema.prisma"
+  },
+  "workspaces": [
+    "packages/frontend",
+    "packages/backend",
+    "packages/database"
+  ],
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "prisma": "^5.17.0"
+  }
+}
