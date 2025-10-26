@@ -1,9 +1,26 @@
-"devDependencies": {
-  "postcss": "^8",
-  "tailwindcss": "^3.4.1",
-  "eslint": "^8",
-  "eslint-config-next": "14.2.5",
-  "typescript": "^5.5.3",
-  "@types/react": "^18.2.24",
-  "@types/node": "^20.14.10"
+{
+  "name": "frontend",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "npx prisma generate --schema=../database/schema.prisma && npx prisma db push --schema=../database/schema.prisma && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.5",
+    "lucide-react": "^0.408.0"
+  },
+  "devDependencies": {
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "typescript": "^5.5.3",
+    "@types/react": "^18.2.24",
+    "@types/node": "^20.14.10"
+  }
 }
